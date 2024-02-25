@@ -3,9 +3,9 @@ InstallDir "$InstDir"
 OutFile "${OUTPUTFILE}" # set through command line arguments
 
 # Links for "Add/Remove Programs"
-!define HELPURL "https://github.com/Cryptomines-Network/cryptomines-evm-client/issues"
-!define UPDATEURL "https://github.com/Cryptomines-Network/cryptomines-evm-client/releases"
-!define ABOUTURL "https://github.com/Cryptomines-Network/cryptomines-evm-client"
+!define HELPURL "https://github.com/Cryptomines-Network/corpochain-evm-client/issues"
+!define UPDATEURL "https://github.com/Cryptomines-Network/corpochain-evm-client/releases"
+!define ABOUTURL "https://github.com/Cryptomines-Network/corpochain-evm-client"
 !define /date NOW "%Y%m%d"
 
 PageEx license
@@ -19,10 +19,10 @@ Section "Geth" GETH_IDX
 
   # Create start menu launcher
   createDirectory "$SMPROGRAMS\${APPNAME}"
-  createShortCut "$SMPROGRAMS\${APPNAME}\${APPNAME}.lnk" "$INSTDIR\cryptomines-geth.exe" "--syncmode full --http"
-  createShortCut "$SMPROGRAMS\${APPNAME}\${APPNAME} (Testnet).lnk" "$INSTDIR\cryptomines-geth.exe" "--testnet --syncmode full --http"
-  createShortCut "$SMPROGRAMS\${APPNAME}\Attach.lnk" "$INSTDIR\cryptomines-geth.exe" "attach"
-  createShortCut "$SMPROGRAMS\${APPNAME}\Attach (Testnet).lnk" "$INSTDIR\cryptomines-geth.exe" 'attach --datadir "$PROFILE\.cryptomines\execution\testnet"'
+  createShortCut "$SMPROGRAMS\${APPNAME}\${APPNAME}.lnk" "$INSTDIR\corpochain-geth.exe" "--syncmode full --http"
+  createShortCut "$SMPROGRAMS\${APPNAME}\${APPNAME} (Testnet).lnk" "$INSTDIR\corpochain-geth.exe" "--testnet --syncmode full --http"
+  createShortCut "$SMPROGRAMS\${APPNAME}\Attach.lnk" "$INSTDIR\corpochain-geth.exe" "attach"
+  createShortCut "$SMPROGRAMS\${APPNAME}\Attach (Testnet).lnk" "$INSTDIR\corpochain-geth.exe" 'attach --datadir "$PROFILE\.cryptomines\execution\testnet"'
   createShortCut "$SMPROGRAMS\${APPNAME}\Uninstall.lnk" "$INSTDIR\uninstall.exe"
 
   # Firewall - remove rules (if exists)
@@ -31,9 +31,9 @@ Section "Geth" GETH_IDX
   SimpleFC::AdvRemoveRule "Cryptomines Evm Client UDP discovery (UDP:44303)"
 
   # Firewall - add rules
-  SimpleFC::AdvAddRule "Cryptomines Evm Client incoming peers (TCP:44303)" ""  6 1 1 2147483647 1 "$INSTDIR\cryptomines-geth.exe" "" "" "Cryptomines Evm Client" 44303 "" "" ""
-  SimpleFC::AdvAddRule "Cryptomines Evm Client outgoing peers (TCP:44303)" ""  6 2 1 2147483647 1 "$INSTDIR\cryptomines-geth.exe" "" "" "Cryptomines Evm Client" "" 44303 "" ""
-  SimpleFC::AdvAddRule "Cryptomines Evm Client UDP discovery (UDP:44303)" "" 17 2 1 2147483647 1 "$INSTDIR\cryptomines-geth.exe" "" "" "Cryptomines Evm Client" "" 44303 "" ""
+  SimpleFC::AdvAddRule "Cryptomines Evm Client incoming peers (TCP:44303)" ""  6 1 1 2147483647 1 "$INSTDIR\corpochain-geth.exe" "" "" "Cryptomines Evm Client" 44303 "" "" ""
+  SimpleFC::AdvAddRule "Cryptomines Evm Client outgoing peers (TCP:44303)" ""  6 2 1 2147483647 1 "$INSTDIR\corpochain-geth.exe" "" "" "Cryptomines Evm Client" "" 44303 "" ""
+  SimpleFC::AdvAddRule "Cryptomines Evm Client UDP discovery (UDP:44303)" "" 17 2 1 2147483647 1 "$INSTDIR\corpochain-geth.exe" "" "" "Cryptomines Evm Client" "" 44303 "" ""
 
   # Set default IPC endpoint (https://github.com/ethereum/EIPs/issues/147)
   ${EnvVarUpdate} $0 "ETHEREUM_SOCKET" "R" "HKLM" "\\.\pipe\cryptomines.ipc"

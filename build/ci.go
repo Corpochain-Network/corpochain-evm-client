@@ -63,7 +63,7 @@ var (
 	// Files that end up in the geth*.zip archive.
 	gethArchiveFiles = []string{
 		"COPYING",
-		executablePath("cryptomines-geth"),
+		executablePath("corpochain-geth"),
 	}
 
 	// Files that end up in the geth-alltools*.zip archive.
@@ -72,7 +72,7 @@ var (
 		executablePath("abigen"),
 		executablePath("bootnode"),
 		executablePath("evm"),
-		executablePath("cryptomines-geth"),
+		executablePath("corpochain-geth"),
 		executablePath("rlpdump"),
 		executablePath("clef"),
 	}
@@ -92,7 +92,7 @@ var (
 			Description: "Developer utility version of the EVM that is capable of running bytecode snippets within a configurable environment and execution mode.",
 		},
 		{
-			BinaryName:  "cryptomines-geth",
+			BinaryName:  "corpochain-geth",
 			Description: "Cryptomines evm client.",
 		},
 		{
@@ -107,7 +107,7 @@ var (
 
 	// A debian package is created for all executables listed here.
 	debEthereum = debPackage{
-		Name:        "cryptomines-evm-client",
+		Name:        "corpochain-evm-client",
 		Version:     params.VersionWithMeta,
 		Executables: debExecutables,
 	}
@@ -381,8 +381,8 @@ func doArchive(cmdline []string) {
 	var (
 		env      = build.Env()
 		basegeth = archiveBasename(*arch, params.ArchiveVersion(env.Commit))
-		geth     = "cryptomines-evm-client-" + basegeth + ext
-		alltools = "cryptomines-evm-client-alltools-" + basegeth + ext
+		geth     = "corpochain-evm-client-" + basegeth + ext
+		alltools = "corpochain-evm-client-alltools-" + basegeth + ext
 	)
 	maybeSkipArchive(env)
 	if err := build.WriteArchive(geth, gethArchiveFiles); err != nil {
@@ -848,7 +848,7 @@ func (meta debMetadata) ExeConflicts(exe debExecutable) string {
 		// be preferred and the conflicting files should be handled via
 		// alternates. We might do this eventually but using a conflict is
 		// easier now.
-		return "cryptomines-evm-client, " + exe.Package()
+		return "corpochain-evm-client, " + exe.Package()
 	}
 	return ""
 }
@@ -901,7 +901,7 @@ func doWindowsInstaller(cmdline []string) {
 			continue
 		}
 		allTools = append(allTools, filepath.Base(file))
-		if filepath.Base(file) == "cryptomines-geth.exe" {
+		if filepath.Base(file) == "corpochain-geth.exe" {
 			gethTool = file
 		} else {
 			devTools = append(devTools, file)
@@ -933,7 +933,7 @@ func doWindowsInstaller(cmdline []string) {
 	if env.Commit != "" {
 		version[2] += "-" + env.Commit[:8]
 	}
-	installer, err := filepath.Abs("cryptomines-evm-client-" + archiveBasename(*arch, params.ArchiveVersion(env.Commit)) + ".exe")
+	installer, err := filepath.Abs("corpochain-evm-client-" + archiveBasename(*arch, params.ArchiveVersion(env.Commit)) + ".exe")
 	if err != nil {
 		log.Fatalf("Failed to convert installer file path: %v", err)
 	}
