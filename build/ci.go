@@ -81,11 +81,11 @@ var (
 	debExecutables = []debExecutable{
 		{
 			BinaryName:  "abigen",
-			Description: "Source code generator to convert Cryptomines contract definitions into easy to use, compile-time type-safe Go packages.",
+			Description: "Source code generator to convert Corpochain contract definitions into easy to use, compile-time type-safe Go packages.",
 		},
 		{
 			BinaryName:  "bootnode",
-			Description: "Cryptomines evm chain bootnode.",
+			Description: "Corpochain evm chain bootnode.",
 		},
 		{
 			BinaryName:  "evm",
@@ -93,7 +93,7 @@ var (
 		},
 		{
 			BinaryName:  "corpochain-geth",
-			Description: "Cryptomines evm client.",
+			Description: "Corpochain evm client.",
 		},
 		{
 			BinaryName:  "rlpdump",
@@ -101,7 +101,7 @@ var (
 		},
 		{
 			BinaryName:  "clef",
-			Description: "Cryptomines account management tool.",
+			Description: "Corpochain account management tool.",
 		},
 	}
 
@@ -790,7 +790,7 @@ func newDebMetadata(distro string, goboot string, env build.Environment, t time.
 		GoBootPath:    debGoBootPaths[goboot],
 		PackageName:   name,
 		Env:           env,
-		Author:        "Cryptomines Network <kontakt@kopalniekrypto.pl>",
+		Author:        "Corpochain Network <kontakt@kopalniekrypto.pl>",
 		Distro:        distro,
 		Version:       version,
 		Time:          t.Format(time.RFC1123Z),

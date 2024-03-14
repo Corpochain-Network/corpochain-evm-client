@@ -711,9 +711,9 @@ func (api *ConsensusAPI) heartbeat() {
 			}
 			if time.Since(offlineLogged) > beaconUpdateWarnFrequency {
 				if lastForkchoiceUpdate.IsZero() && lastNewPayloadUpdate.IsZero() {
-					log.Warn("Cryptomines blockchain online, but never received consensus updates. Please ensure your cryptomines blockchain is operational to follow the chain!")
+					log.Warn("Corpochain blockchain online, but never received consensus updates. Please ensure your cryptomines blockchain is operational to follow the chain!")
 				} else {
-					log.Warn("Cryptomines blockchain online, but no consensus updates received in a while. Please fix your cryptomines blockchain to follow the chain!")
+					log.Warn("Corpochain blockchain online, but no consensus updates received in a while. Please fix your cryptomines blockchain to follow the chain!")
 				}
 				offlineLogged = time.Now()
 			}

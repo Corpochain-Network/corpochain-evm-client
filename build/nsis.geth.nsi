@@ -29,8 +29,8 @@
 # - sign installer
 CRCCheck on
 
-!define GROUPNAME "Cryptomines Evm Client"
-!define APPNAME "Cryptomines Evm Client"
+!define GROUPNAME "Corpochain Evm Client"
+!define APPNAME "Corpochain Evm Client"
 !define DESCRIPTION "Official Go implementation of the Ethereum protocol"
 !addplugindir .\
 

@@ -1,11 +1,11 @@
-Name "Cryptomines Evm Client ${MAJORVERSION}.${MINORVERSION}.${BUILDVERSION}" # VERSION variables set through command line arguments
+Name "Corpochain Evm Client ${MAJORVERSION}.${MINORVERSION}.${BUILDVERSION}" # VERSION variables set through command line arguments
 InstallDir "$InstDir"
 OutFile "${OUTPUTFILE}" # set through command line arguments
 
 # Links for "Add/Remove Programs"
-!define HELPURL "https://github.com/Cryptomines-Network/corpochain-evm-client/issues"
-!define UPDATEURL "https://github.com/Cryptomines-Network/corpochain-evm-client/releases"
-!define ABOUTURL "https://github.com/Cryptomines-Network/corpochain-evm-client"
+!define HELPURL "https://github.com/Corpochain-Network/corpochain-evm-client/issues"
+!define UPDATEURL "https://github.com/Corpochain-Network/corpochain-evm-client/releases"
+!define ABOUTURL "https://github.com/Corpochain-Network/corpochain-evm-client"
 !define /date NOW "%Y%m%d"
 
 PageEx license
@@ -26,14 +26,14 @@ Section "Geth" GETH_IDX
   createShortCut "$SMPROGRAMS\${APPNAME}\Uninstall.lnk" "$INSTDIR\uninstall.exe"
 
   # Firewall - remove rules (if exists)
-  SimpleFC::AdvRemoveRule "Cryptomines Evm Client incoming peers (TCP:44303)"
-  SimpleFC::AdvRemoveRule "Cryptomines Evm Client outgoing peers (TCP:44303)"
-  SimpleFC::AdvRemoveRule "Cryptomines Evm Client UDP discovery (UDP:44303)"
+  SimpleFC::AdvRemoveRule "Corpochain Evm Client incoming peers (TCP:44303)"
+  SimpleFC::AdvRemoveRule "Corpochain Evm Client outgoing peers (TCP:44303)"
+  SimpleFC::AdvRemoveRule "Corpochain Evm Client UDP discovery (UDP:44303)"
 
   # Firewall - add rules
-  SimpleFC::AdvAddRule "Cryptomines Evm Client incoming peers (TCP:44303)" ""  6 1 1 2147483647 1 "$INSTDIR\corpochain-geth.exe" "" "" "Cryptomines Evm Client" 44303 "" "" ""
-  SimpleFC::AdvAddRule "Cryptomines Evm Client outgoing peers (TCP:44303)" ""  6 2 1 2147483647 1 "$INSTDIR\corpochain-geth.exe" "" "" "Cryptomines Evm Client" "" 44303 "" ""
-  SimpleFC::AdvAddRule "Cryptomines Evm Client UDP discovery (UDP:44303)" "" 17 2 1 2147483647 1 "$INSTDIR\corpochain-geth.exe" "" "" "Cryptomines Evm Client" "" 44303 "" ""
+  SimpleFC::AdvAddRule "Corpochain Evm Client incoming peers (TCP:44303)" ""  6 1 1 2147483647 1 "$INSTDIR\corpochain-geth.exe" "" "" "Corpochain Evm Client" 44303 "" "" ""
+  SimpleFC::AdvAddRule "Corpochain Evm Client outgoing peers (TCP:44303)" ""  6 2 1 2147483647 1 "$INSTDIR\corpochain-geth.exe" "" "" "Corpochain Evm Client" "" 44303 "" ""
+  SimpleFC::AdvAddRule "Corpochain Evm Client UDP discovery (UDP:44303)" "" 17 2 1 2147483647 1 "$INSTDIR\corpochain-geth.exe" "" "" "Corpochain Evm Client" "" 44303 "" ""
 
   # Set default IPC endpoint (https://github.com/ethereum/EIPs/issues/147)
   ${EnvVarUpdate} $0 "ETHEREUM_SOCKET" "R" "HKLM" "\\.\pipe\cryptomines.ipc"

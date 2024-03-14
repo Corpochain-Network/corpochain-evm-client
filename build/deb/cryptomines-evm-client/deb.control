@@ -5,12 +5,12 @@ Maintainer: {{.Author}}
 Build-Depends: debhelper (>= 8.0.0), {{.GoBootPackage}}
 Standards-Version: 3.9.5
 Homepage: https://kopalniekrypto.pl/
-Vcs-Git: https://github.com/Cryptomines-Network/corpochain-evm-client.git
-Vcs-Browser: https://github.com/Cryptomines-Network/corpochain-evm-client
+Vcs-Git: https://github.com/Corpochain-Network/corpochain-evm-client.git
+Vcs-Browser: https://github.com/Corpochain-Network/corpochain-evm-client
 
 Package: {{.Name}}
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Built-Using: ${misc:Built-Using}
-Description: Cryptomines Evm Client
- Cryptomines Evm Client
+Description: Corpochain Evm Client
+ Corpochain Evm Client
