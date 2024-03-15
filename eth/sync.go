@@ -130,7 +130,7 @@ func (cs *chainSyncer) loop() {
 			// it has not yet switched us over, keep warning the user that their infra is
 			// potentially flaky.
 			if errors.Is(err, downloader.ErrMergeTransition) && time.Since(cs.warned) > 10*time.Second {
-				log.Warn("Local chain is post-merge, waiting for cryptomines blockchain sync switch-over...")
+				log.Warn("Local chain is post-merge, waiting for corpochain blockchain sync switch-over...")
 				cs.warned = time.Now()
 			}
 		case <-cs.force.C:
@@ -155,9 +155,9 @@ func (cs *chainSyncer) nextSyncOp() *chainSyncOp {
 	if cs.doneCh != nil {
 		return nil // Sync already running
 	}
-	// If a cryptomines blockchain once took over control, disable the entire legacy sync
+	// If a corpochain blockchain once took over control, disable the entire legacy sync
 	// path from here on end. Note, there is a slight "race" between reaching TTD
-	// and the cryptomines blockchain taking over. The downloader will enforce that nothing
+	// and the corpochain blockchain taking over. The downloader will enforce that nothing
 	// above the first TTD will be delivered to the chain for import.
 	//
 	// An alternative would be to check the local chain for exceeding the TTD and
@@ -188,9 +188,9 @@ func (cs *chainSyncer) nextSyncOp() *chainSyncOp {
 	if op.td.Cmp(ourTD) <= 0 {
 		// We seem to be in sync according to the legacy rules. In the merge
 		// world, it can also mean we're stuck on the merge block, waiting for
-		// a cryptomines blockchain. In the latter case, notify the user.
+		// a corpochain blockchain. In the latter case, notify the user.
 		if ttd := cs.handler.chain.Config().TerminalTotalDifficulty; ttd != nil && ourTD.Cmp(ttd) >= 0 && time.Since(cs.warned) > 10*time.Second {
-			log.Warn("Local chain is post-merge, waiting for cryptomines blockchain sync switch-over...")
+			log.Warn("Local chain is post-merge, waiting for corpochain blockchain sync switch-over...")
 			cs.warned = time.Now()
 		}
 		return nil // We're in sync

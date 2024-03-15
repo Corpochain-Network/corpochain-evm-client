@@ -72,7 +72,7 @@ func DefaultDataDir() string {
 	// Try to place the data folder in the user's home dir
 	home := homeDir()
 	if home != "" {
-		return filepath.Join(home, ".cryptomines", "execution")
+		return filepath.Join(home, ".corpochain", "execution")
 	}
 	// As we cannot guess a stable location, return empty and handle later
 	return ""

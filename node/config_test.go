@@ -80,15 +80,15 @@ func TestIPCPathResolution(t *testing.T) {
 	}{
 		{"", "", false, ""},
 		{"data", "", false, ""},
-		{"", "cryptomines.ipc", false, filepath.Join(os.TempDir(), "cryptomines.ipc")},
-		{"data", "cryptomines.ipc", false, "data/cryptomines.ipc"},
-		{"data", "./cryptomines.ipc", false, "./cryptomines.ipc"},
-		{"data", "/cryptomines.ipc", false, "/cryptomines.ipc"},
+		{"", "corpochain.ipc", false, filepath.Join(os.TempDir(), "corpochain.ipc")},
+		{"data", "corpochain.ipc", false, "data/corpochain.ipc"},
+		{"data", "./corpochain.ipc", false, "./corpochain.ipc"},
+		{"data", "/corpochain.ipc", false, "/corpochain.ipc"},
 		{"", "", true, ``},
 		{"data", "", true, ``},
-		{"", "cryptomines.ipc", true, `\\.\pipe\cryptomines.ipc`},
-		{"data", "cryptomines.ipc", true, `\\.\pipe\cryptomines.ipc`},
-		{"data", `\\.\pipe\cryptomines.ipc`, true, `\\.\pipe\cryptomines.ipc`},
+		{"", "corpochain.ipc", true, `\\.\pipe\corpochain.ipc`},
+		{"data", "corpochain.ipc", true, `\\.\pipe\corpochain.ipc`},
+		{"data", `\\.\pipe\corpochain.ipc`, true, `\\.\pipe\corpochain.ipc`},
 	}
 	for i, test := range tests {
 		// Only run when platform/test match

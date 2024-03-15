@@ -22,7 +22,7 @@ Section "Geth" GETH_IDX
   createShortCut "$SMPROGRAMS\${APPNAME}\${APPNAME}.lnk" "$INSTDIR\corpochain-geth.exe" "--http"
   createShortCut "$SMPROGRAMS\${APPNAME}\${APPNAME} (Testnet).lnk" "$INSTDIR\corpochain-geth.exe" "--testnet --http"
   createShortCut "$SMPROGRAMS\${APPNAME}\Attach.lnk" "$INSTDIR\corpochain-geth.exe" "attach"
-  createShortCut "$SMPROGRAMS\${APPNAME}\Attach (Testnet).lnk" "$INSTDIR\corpochain-geth.exe" 'attach --datadir "$PROFILE\.cryptomines\execution\testnet"'
+  createShortCut "$SMPROGRAMS\${APPNAME}\Attach (Testnet).lnk" "$INSTDIR\corpochain-geth.exe" 'attach --datadir "$PROFILE\.corpochain\execution\testnet"'
   createShortCut "$SMPROGRAMS\${APPNAME}\Uninstall.lnk" "$INSTDIR\uninstall.exe"
 
   # Firewall - remove rules (if exists)
@@ -36,8 +36,8 @@ Section "Geth" GETH_IDX
   SimpleFC::AdvAddRule "Corpochain Evm Client UDP discovery (UDP:44303)" "" 17 2 1 2147483647 1 "$INSTDIR\corpochain-geth.exe" "" "" "Corpochain Evm Client" "" 44303 "" ""
 
   # Set default IPC endpoint (https://github.com/ethereum/EIPs/issues/147)
-  ${EnvVarUpdate} $0 "ETHEREUM_SOCKET" "R" "HKLM" "\\.\pipe\cryptomines.ipc"
-  ${EnvVarUpdate} $0 "ETHEREUM_SOCKET" "A" "HKLM" "\\.\pipe\cryptomines.ipc"
+  ${EnvVarUpdate} $0 "ETHEREUM_SOCKET" "R" "HKLM" "\\.\pipe\corpochain.ipc"
+  ${EnvVarUpdate} $0 "ETHEREUM_SOCKET" "A" "HKLM" "\\.\pipe\corpochain.ipc"
 
   # Add instdir to PATH
   Push "$INSTDIR"

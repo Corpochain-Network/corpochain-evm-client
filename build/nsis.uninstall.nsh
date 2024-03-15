@@ -24,7 +24,7 @@ Section "Uninstall"
   SimpleFC::AdvRemoveRule "Corpochain Evm Client UDP discovery (UDP:44303)"
 
   # Remove IPC endpoint (https://github.com/ethereum/EIPs/issues/147)
-  ${un.EnvVarUpdate} $0 "ETHEREUM_SOCKET" "R" "HKLM" "\\.\pipe\cryptomines.ipc"
+  ${un.EnvVarUpdate} $0 "ETHEREUM_SOCKET" "R" "HKLM" "\\.\pipe\corpochain.ipc"
 
   # Remove install directory from PATH
   Push "$INSTDIR"
